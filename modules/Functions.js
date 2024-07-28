@@ -3,10 +3,20 @@ const whois = require('whois');
 const { exec } = require('child_process');
 const axios = require('axios');
 const { table } = require('table');
-var ini = require('ini');
-const fs = require("fs");
+const fs = require('fs');
+const ini = require('ini');
+const os = require('os');
+const path = require('path');
 
-var config = ini.parse(fs.readFileSync('./config.ini', 'utf-8'));
+const homeDirectory = os.homedir();
+const configPath = path.join(homeDirectory, '.jamal', 'config.ini');
+var config;
+try {
+    config = ini.parse(fs.readFileSync(configPath, 'utf-8'));
+    console.log(config);
+} catch (err) {
+    console.error(`Error reading config file at ${configPath}:`, err);
+}
 
 
 function getDomainName(inputUrl) {
@@ -44,7 +54,7 @@ function parseWhoisData(data) {
     lines.forEach(line => {
         if (line.startsWith('Domain Name:')) {
             info.domainName = line.split(':')[1].trim();
-        } else if (line.startsWith('Sponsoring Registrar Organization:')) {
+        } else if (line.startsWith('Registrar:')) {
             info.registrar = line.split(':')[1].trim();
         } else if (line.startsWith('Registrant Organization:')) {
             info.registrar = line.split(':')[1].trim();

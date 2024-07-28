@@ -38,13 +38,15 @@ async function main() {
             domain = arg;
         } else {
             domain = await crot('Enter your Domain: ');
-            if(!domain.trim()) {
-                console.log(color('red', `Input your Domain/Hostname!`));
-                await sakanigadik();
-                process.exit();
-            }
         }
         domain = getDomainName(domain);
+
+        if(!domain.trim()) {
+            console.log(color('red', `Input your Domain/Hostname!`));
+            await sakanigadik();
+            process.exit();
+        }
+        
         console.log(color('green', `Your Domain/Hostname: ${domain}\n`));
 
         if(arg2) {
