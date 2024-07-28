@@ -15,8 +15,6 @@
     "puppeteer": "^22.14.0",
     "puppeteer-core": "^22.14.0",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "table": "^6.8.2",
     "whois": "^2.14.2"
   }
