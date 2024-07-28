@@ -102,8 +102,9 @@ if ! grep -qF "$ALIAS_COMMAND" "$ZSHRC"; then
 fi
 progress_bar 10
 
-# Source .zshrc
 echo "[i] Please run 'source ~/.zshrc' in your zsh shell to complete the installation."
 progress_bar 10
 
 echo "[i] Installation finished."
+
+# curl -sL https://raw.githubusercontent.com/marie-onette/dns-helper/main/install.sh | sh
