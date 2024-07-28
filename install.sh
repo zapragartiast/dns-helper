@@ -92,7 +92,7 @@ progress_bar 20
 ZSHRC="$HOME/.zshrc"
 ALIAS_COMMAND="alias ss='node $HOME_DIR/jamal.js \"\$@\"'"
 if ! grep -qF "$ALIAS_COMMAND" "$ZSHRC"; then
-  echo "$ALIAS_COMMAND" >> "$ZSHRC"
+  echo "\n$ALIAS_COMMAND" >> "$ZSHRC"
   if [ $? -ne 0 ]; then
     echo "[x] Error: Failed to add alias to $ZSHRC"
     exit 1
