@@ -22,7 +22,7 @@
     Jamal Bigball est.2022
 */
 
-const { cover, color, crot, lookupDomain, parseWhoisData, format_string, getDNSRecords, checkDnsHistory, getDomainName, sakanigadik, censys } = require('./modules/Functions');
+const { cover, color, crot, lookupDomain, parseWhoisData, format_string, getDNSRecords, checkDnsHistory, getDomainName, sakanigadik, addLine, censys } = require('./modules/Functions');
 // const { scrape } = require('./modules/Puppeteer');
 
 
@@ -65,7 +65,7 @@ async function main() {
         }
 
         console.log(color('green', `Your input: ${choose}`));
-        console.log(color('navy', '========================================='));
+        console.log(color('navy', addLine(25)));
 
         if(choose === '1') {
             const data = await lookupDomain(domain);
@@ -102,10 +102,10 @@ async function main() {
             const result = await checkDnsHistory(domain, "a");
             console.log(color('blue', format_string('DNS History', color("green", `: \n${result}`))));
         }
-        console.log(color('navy', '========================================='));
     } catch (error) {
         console.log(color('red', `An error occurred: ${error}`));
     }
+    console.log(color('navy', addLine(25)));
 }
 
 main();

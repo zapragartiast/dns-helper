@@ -40,6 +40,18 @@ function lookupDomain(domain) {
     });
 }
 
+function addLine(val) {
+    let line = '';
+    for(let i = 1; i < val; i++) {
+        line += '=';
+    }
+    line += ' [Jamal BOT] ';
+    for(let i = 1; i < val; i++) {
+        line += '=';
+    }
+    return line;
+}
+
 function parseWhoisData(data) {
     const lines = data.split('\n');
     const info = {
@@ -223,7 +235,7 @@ async function getGlueRecords(nsRecords) {
       });
       
       const dataTable = [
-        ['Name Server', 'IP Address'], // table headers
+        ['Name Server', 'IP Address'],
         ...flattenedData.map(row => [row.nameServer, row.ip])
       ];
       return table(dataTable);
@@ -347,5 +359,6 @@ module.exports = {
     parseWhoisData,
     getDomainName,
     sakanigadik,
+    addLine,
     censys
 };

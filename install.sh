@@ -31,14 +31,6 @@ command_exists() {
 
 echo "[i] Installation started..."
 
-echo "[i] Checking Homebrew installation..."
-if ! command_exists brew; then
-  echo "[x] Error: Homebrew is not installed. Please install Homebrew first."
-  exit 1
-fi
-echo "[i] Success: Homebrew is installed."
-progress_bar 10
-
 echo "[i] Checking Node.js installation..."
 if ! command_exists node; then
   echo "[x] Error: Node.js is not installed. Please install Node.js first."
