@@ -22,13 +22,14 @@
     Jamal Bigball est.2022
 */
 
-const { cover, color, crot, lookupDomain, parseWhoisData, format_string, getDNSRecords, checkDnsHistory, getDomainName, sakanigadik, addLine, censys } = require('./modules/Functions');
+const { cover, color, crot, lookupDomain, parseWhoisData, format_string, getDNSRecords, checkDnsHistory, getDomainName, sakanigadik, addLine, setTerminalSize, censys } = require('./modules/Functions');
 // const { scrape } = require('./modules/Puppeteer');
 
 
 async function main() {
     try {
         console.clear();
+        await setTerminalSize(66, 104);
         console.log(cover());
 
         let domain, choose = '';

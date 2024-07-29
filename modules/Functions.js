@@ -141,6 +141,24 @@ function parseStr(string, start, end) {
     return str;
 }
 
+function setTerminalSize(rows, cols) {
+    return new Promise((resolve, reject) => {
+      const command = `printf '\\e[8;${rows};${cols}t'`;
+      exec(command, (error, stdout, stderr) => {
+        if (error) {
+          reject(`Error: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          reject(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(stdout);
+        resolve(stdout);
+      });
+    });
+  }
+
 function cover() {
     let template = color('blue', `████████████████████████████████████████████████████████████████████████████████████████████████████████\n`);
     template += color('blue', `██                                                                                                    ██\n`);
@@ -360,5 +378,6 @@ module.exports = {
     getDomainName,
     sakanigadik,
     addLine,
+    setTerminalSize,
     censys
 };
